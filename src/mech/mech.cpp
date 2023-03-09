@@ -23,7 +23,7 @@ namespace src::Mech {
     ExpansionStates currExpansionState = ExpansionStates::IN;
 
     float targetFlywheelRpm = 0;
-    void flywheelVelocityControl(void) {
+    void flywheelVelocityControl(void *) {
         while(true) {
             if (targetFlywheelRpm == 0) {
                 flywheelMotor.moveVoltage(0);
@@ -42,12 +42,6 @@ namespace src::Mech {
             }
 
             pros::delay(1);
-        }
-    }
-
-    void goofy(void) {
-        while(true) {
-            
         }
     }
     

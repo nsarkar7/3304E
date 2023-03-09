@@ -4,6 +4,7 @@
 #include "pros/misc.hpp"
 #include "pros/rtos.hpp"
 #include "mech/mech.hpp"
+#include "mapping/mapping.hpp"
 #include <cstdlib>
 
 void on_center_button() {
