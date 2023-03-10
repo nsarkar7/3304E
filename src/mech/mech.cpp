@@ -8,6 +8,7 @@
 #include "pros/rtos.hpp"
 #include "constants.hpp"
 #include <string>
+#include <map>
 
 namespace src::Mech {
 
@@ -22,6 +23,13 @@ namespace src::Mech {
     IntakeStates currIntakeState = IntakeStates::OFF;
     IndexerStates currIndexerState = IndexerStates::OUT;
     ExpansionStates currExpansionState = ExpansionStates::IN;
+
+    std::map<int, int> piston_states = {
+    { 1, 1},
+    { 2, 0},
+    { 3, 0}
+};
+
 
     float targetFlywheelRpm = 0;
     void flywheelVelocityControl(void *) {
@@ -54,13 +62,16 @@ namespace src::Mech {
 
     void shoot(int delay) {
         indexer.set_value(static_cast<bool>(IndexerStates::IN));
+        piston_states.find(1)->second = 0;
+
         pros::delay(100);
+
         indexer.set_value(static_cast<bool>(IndexerStates::OUT));
+        piston_states.find(1)->second = 1;
         pros::delay(delay);
     }
 
     void update() {
-        // Gate state updating
         currIntakeState = IntakeStates::OFF;
 
         if (flywheelToggle.changedToPressed()) {
@@ -118,10 +129,14 @@ namespace src::Mech {
             case ExpansionStates::IN:
                 expansion1.set_value(static_cast<bool>(ExpansionStates::IN));
                 expansion2.set_value(static_cast<bool>(ExpansionStates::IN));
+                piston_states.find(2)->second = 0;
+                piston_states.find(3)->second = 0;
                 break;
             case ExpansionStates::OUT:
                 expansion1.set_value(static_cast<bool>(ExpansionStates::OUT));
                 expansion2.set_value(static_cast<bool>(ExpansionStates::OUT));
+                piston_states.find(2)->second = 1;
+                piston_states.find(3)->second = 1;
                 break;
         }
     }

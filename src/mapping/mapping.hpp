@@ -4,6 +4,7 @@
 #include "pros/adi.hpp"
 #include "pros/vision.hpp"
 #include "constants.hpp"
+#include "../src/mech/mech.hpp"
 
 namespace src::Mapping {
 

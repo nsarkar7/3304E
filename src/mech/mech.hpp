@@ -32,6 +32,8 @@ namespace src::Mech {
     extern void update();
     extern void act();
 
+    extern std::map<int, int> piston_states;
+
     static Motor flywheelMotor = Motor(FLYWHEEL_PORT, true, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
     static Motor intakeMotor = Motor(INTAKE_PORT, false, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
 
