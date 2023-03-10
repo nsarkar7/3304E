@@ -16,7 +16,8 @@ static constexpr uint8_t INTAKE_PORT = 12;
 //3 Wire Ports
 
 static constexpr uint8_t INDEXER_PORT = 'H';
-
+static constexpr uint8_t EXPANSION_1_PORT = 'F';
+static constexpr uint8_t EXPANSION_2_PORT = 'G';
 // Sensor Ports
 static constexpr uint8_t IMU_PORT = 21;
 

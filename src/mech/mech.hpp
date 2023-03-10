@@ -36,4 +36,7 @@ namespace src::Mech {
     static Motor intakeMotor = Motor(INTAKE_PORT, false, AbstractMotor::gearset::blue, AbstractMotor::encoderUnits::degrees);
 
     static pros::ADIDigitalOut indexer = pros::ADIDigitalOut(INDEXER_PORT, static_cast<bool>(IndexerStates::OUT));
+
+    static pros::ADIDigitalOut expansion1 = pros::ADIDigitalOut(INDEXER_PORT, static_cast<bool>(IndexerStates::IN));
+    static pros::ADIDigitalOut expansion2 = pros::ADIDigitalOut(INDEXER_PORT, static_cast<bool>(IndexerStates::IN));
 }

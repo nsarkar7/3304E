@@ -24,7 +24,6 @@ namespace src::Mapping {
             to_string(flywheelMotor.getActualVelocity()) + "," + 
             to_string(intakeMotor.getActualVelocity()) + "\n";
             fprintf(storage, "%s",str);
-            pros
         }
     }
 

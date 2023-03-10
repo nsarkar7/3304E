@@ -5,6 +5,7 @@
 #include "pros/rtos.hpp"
 #include "mech/mech.hpp"
 #include "mapping/mapping.hpp"
+#include "autoSelect/selection.h"
 #include <cstdlib>
 
 void on_center_button() {
@@ -20,8 +21,7 @@ void on_center_button() {
 
 void initialize() {
 	pros::lcd::initialize();
-	pros::lcd::set_text(1, "Hello PROS User!");
-
+	selector::init();
 	pros::lcd::register_btn1_cb(on_center_button);
 }
 

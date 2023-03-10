@@ -16,6 +16,7 @@ namespace src::Mech {
     ControllerButton rapidFireBtn(ControllerDigital::L2);
     ControllerButton intakeBtn(ControllerDigital::R1);
     ControllerButton outtakeBtn(ControllerDigital::R2);
+    ControllerButton expansionBtn(ControllerDigital::up);
 
     FlywheelStates currFlywheelState = FlywheelStates::OFF;
     IntakeStates currIntakeState = IntakeStates::OFF;
@@ -53,9 +54,9 @@ namespace src::Mech {
 
     void shoot(int delay) {
         indexer.set_value(static_cast<bool>(IndexerStates::IN));
-        pros::delay(delay/2);
+        pros::delay(100);
         indexer.set_value(static_cast<bool>(IndexerStates::OUT));
-        pros::delay(delay/2);
+        pros::delay(delay);
     }
 
     void update() {
@@ -74,9 +75,9 @@ namespace src::Mech {
             shoot(300);
         }
         if (rapidFireBtn.controllerGet() == true) {
-            shoot(350);
-            shoot(350);
-            shoot(350);
+            shoot(300);
+            shoot(500);
+            shoot(0);
         }
         if (intakeBtn.controllerGet() == true) {
             currIntakeState = IntakeStates::INTAKE;
@@ -86,6 +87,9 @@ namespace src::Mech {
             currIntakeState = IntakeStates::OUTAKE;
         }
 
+        if (expansionBtn.controllerGet() == true) {
+            currExpansionState = ExpansionStates::OUT;
+        }
     }
 
     void act() {
@@ -107,6 +111,17 @@ namespace src::Mech {
                 break;
             case FlywheelStates::OFF:
                 targetFlywheelRpm = 0;
+                break;
+        }
+
+        switch (currExpansionState) {
+            case ExpansionStates::IN:
+                expansion1.set_value(static_cast<bool>(ExpansionStates::IN));
+                expansion2.set_value(static_cast<bool>(ExpansionStates::IN));
+                break;
+            case ExpansionStates::OUT:
+                expansion1.set_value(static_cast<bool>(ExpansionStates::OUT));
+                expansion2.set_value(static_cast<bool>(ExpansionStates::OUT));
                 break;
         }
     }
