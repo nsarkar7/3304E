@@ -18,7 +18,9 @@ static constexpr uint8_t INTAKE_PORT = 12;
 static constexpr uint8_t INDEXER_PORT = 'H';
 static constexpr uint8_t EXPANSION_1_PORT = 'F';
 static constexpr uint8_t EXPANSION_2_PORT = 'G';
+
 // Sensor Ports
+
 static constexpr uint8_t IMU_PORT = 21;
 
 // Physical Constants
@@ -37,3 +39,7 @@ static constexpr float D_GAIN = 0.00025f;
 static constexpr float P_GAIN_TURN = 0.05f;
 static constexpr float I_GAIN_TURN = 0.000008f;
 static constexpr float D_GAIN_TURN = 0.16f;//0.15
+
+// Driver Mapping Constants
+static constexpr float TIME_LIMIT = 60; //seconds
+static constexpr float LOG_INTERVAL = 1; //msecs
