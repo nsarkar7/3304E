@@ -74,7 +74,4 @@ namespace src::Mapping {
         return count;
     }
 
-    int csv_to_array(string file_path) {
-
-    }
 }
